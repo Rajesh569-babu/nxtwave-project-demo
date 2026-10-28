@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NxtWave Workshop Growth Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-mark"></span>NxtWave Growth Intern Challenge</p>
+          <h1>Workshop Growth Tracker</h1>
+          <p class="page-subtitle">A clear view of registrations, referral activity, and the next best campaign actions.</p>
+        </div>
+        <div class="badge"><span class="badge-dot"></span><span>CAMPAIGN TARGET</span><strong>500 registrations</strong></div>
+      </header>
+
+      <main class="dashboard">
+        <section class="panel form-panel">
+          <div class="panel-header">
+            <h2>Student Registration</h2>
+          </div>
+          <p class="panel-description">Sample registrations are included for the demo. New entries are saved in this browser.</p>
+          <p id="storageStatus" class="status-message" role="status" aria-live="polite"></p>
+
+          <form id="registrationForm">
+            <div class="form-grid">
+              <label>
+                Student Name
+                <input type="text" id="studentName" placeholder="e.g. Aisha R" required />
+              </label>
+
+              <label>
+                Branch
+                <select id="branch" required>
+                  <option value="CSE">CSE</option>
+                  <option value="IT">IT</option>
+                  <option value="AI/ML">AI/ML</option>
+                  <option value="ECE">ECE</option>
+                  <option value="MECH">Mechanical</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+
+              <label>
+                Source
+                <select id="source" required>
+                  <option value="College Ambassador">College Ambassador</option>
+                  <option value="Technical Club">Technical Club</option>
+                  <option value="WhatsApp Group">WhatsApp Group</option>
+                  <option value="Referral">Referral</option>
+                  <option value="Instagram">Instagram</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+
+              <label>
+                Referral Code
+                <input type="text" id="referralCode" placeholder="e.g. NXT-AMB-09" />
+              </label>
+            </div>
+
+            <button type="submit" class="primary-btn">Add Registration</button>
+          </form>
+        </section>
+
+        <section class="panel stats-panel">
+          <div class="stats-grid">
+            <article class="stat-card accent-purple">
+              <span class="stat-label">Total Registrations</span>
+              <strong id="totalRegistrations">0</strong>
+              <small id="registrationDelta">0 since last update</small>
+            </article>
+
+            <article class="stat-card accent-blue">
+              <span class="stat-label">Target Progress</span>
+              <strong id="targetProgress">0%</strong>
+              <small id="remainingRegistrations">500 remaining</small>
+              <span class="progress-track" aria-hidden="true"><span id="targetProgressBar" class="progress-fill"></span></span>
+            </article>
+
+            <article class="stat-card accent-green">
+              <span class="stat-label">Best Channel</span>
+              <strong id="bestChannel">-</strong>
+              <small id="bestChannelCount">0 registrations</small>
+            </article>
+
+            <article class="stat-card accent-orange">
+              <span class="stat-label">Referral Codes</span>
+              <strong id="ambassadorCount">0</strong>
+              <small>Codes with registrations</small>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel channel-panel">
+          <div class="panel-header">
+            <h2>Channel Performance</h2>
+            <span class="section-tag">BY REGISTRATIONS</span>
+          </div>
+          <div id="channelChart" class="channel-chart"></div>
+        </section>
+
+        <section class="panel referral-panel">
+          <div class="panel-header">
+            <h2>Referral Tracker</h2>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Source</th>
+                  <th>Registrations</th>
+                  <th>Share of registrations</th>
+                </tr>
+              </thead>
+              <tbody id="referralTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel insights-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Campaign Suggestions</h2>
+              <p class="panel-description">Rule-based recommendations from current registration data</p>
+            </div>
+          </div>
+          <ul id="aiInsights" class="insight-list"></ul>
+        </section>
+
+        <section class="panel registrations-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Recent Registrations</h2>
+              <p class="panel-description">Latest entries appear first.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Branch</th>
+                  <th>Source</th>
+                  <th>Code</th>
+                </tr>
+              </thead>
+              <tbody id="registrationTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
